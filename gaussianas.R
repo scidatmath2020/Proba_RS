@@ -72,7 +72,7 @@ gaussianas_juntas <- rbind(gaussiana,gaussiana_reescalada)
 ggplot()+
   geom_histogram(data = gaussianas_juntas,
                  aes(x=datos,y=stat(density),fill=tipo),
-                 alpha=0.5,binwidth = 2)
+                 alpha=0.5,binwidth = 2,position = "identity")
 
 # Se construye una tabla de dos filas y dos colummas.
 # La primera fila es la media y la desviación de la gaussiana
@@ -110,7 +110,7 @@ ggplot()+
 # Simulamos tres gaussianas independientes
 X1 <- data.frame(datos = rnorm(10000,mean=0,sd=1),
                  tipo = "Sumando 1")
-X2 <- data.frame(datos = rnorm(10000,mean=-30,sd=sqrt(4)),
+X2 <- data.frame(datos = rnorm(10000,mean=5,sd=sqrt(4)),
                  tipo = "Sumando 2")
 X3 <- data.frame(datos = rnorm(10000,mean=15,sd=1),
                  tipo = "Sumando 3")
@@ -127,12 +127,14 @@ gaussianas_juntas <- rbind(X1,X2,X3,suma)
 ggplot()+
   geom_histogram(data = gaussianas_juntas,
                  aes(x=datos,y=stat(density),fill=tipo),
-                 alpha=0.5,binwidth = 0.05)
+                 alpha=0.5,
+                 binwidth = 0.05,
+                 position = "identity")
 
 # Creamos una tabla de una fila y dos columnas.
 # La fila es la media y la desviación que en teoría debe
 # tener la variable suma
-parametros <- data.frame(medias=-15,
+parametros <- data.frame(medias=20,
                          desviaciones=sqrt(6))
 
 # Construimos los tabulados correspondientes a
@@ -150,6 +152,8 @@ gaussianas <- do.call(rbind,gaussianas)
 ggplot()+
   geom_histogram(data = gaussianas_juntas,
                  aes(x=datos,y=stat(density),fill=tipo),
-                 binwidth = 0.1) + 
+                 binwidth = 0.1,
+                 position = "identity",
+                 alpha=0.5) + 
   geom_line(data=gaussianas,aes(x_val,y_val)) +
-  xlim(-40,20)
+  xlim(-5,30)
