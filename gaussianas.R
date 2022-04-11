@@ -1,6 +1,6 @@
 ###################################################
 # Dados una media y una desviación, esta función
-# tabula los valores de una gaussiana en 121 valores 
+# tabula los valores de una gaussiana en 6001 valores 
 # centrados en la media con separación de 0.02
 
 mi_gaussiana <- function(media,desviacion){
