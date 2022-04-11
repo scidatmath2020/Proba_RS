@@ -72,7 +72,9 @@ gaussianas_juntas <- rbind(gaussiana,gaussiana_reescalada)
 ggplot()+
   geom_histogram(data = gaussianas_juntas,
                  aes(x=datos,y=stat(density),fill=tipo),
-                 alpha=0.5,binwidth = 2,position = "identity")
+                 alpha=0.5,
+                 binwidth = 0.5,
+                 position = "identity")
 
 # Se construye una tabla de dos filas y dos colummas.
 # La primera fila es la media y la desviación de la gaussiana
@@ -97,7 +99,9 @@ gaussianas <- do.call(rbind,gaussianas)
 ggplot()+
   geom_histogram(data = gaussianas_juntas,
                  aes(x=datos,y=stat(density),fill=tipo),
-                 alpha=0.5,binwidth = 0.5) +
+                 alpha=0.5,
+                 binwidth = 0.5,
+                 position = "identity") +
   geom_line(data=gaussianas,
             aes(x_val,y_val,colour=parametros)) +
   xlim(-20,40)
